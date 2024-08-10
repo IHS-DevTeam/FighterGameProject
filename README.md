@@ -1,4 +1,4 @@
-# Project Title: Street Fighter Clone Made in Python
+# Project Title: IHS DevTeam 24-25 Game Project
 
 ## 1. Project Description:
 
