@@ -10,7 +10,7 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 600
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Brawler")
+pygame.display.set_caption("IHS Brawl")
 
 #set framerate
 clock = pygame.time.Clock()
@@ -117,7 +117,7 @@ while run:
                 run = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 400)).collidepoint(mouse_pos):
+                if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 300)).collidepoint(mouse_pos):
                     game_started = True
                     intro_count = 3
     else:
