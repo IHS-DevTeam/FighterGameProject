@@ -101,9 +101,19 @@ def draw_start_page(title_img, start_img):
     start_img = pygame.transform.smoothscale(start_img, (start_width, start_height))
     screen.blit(start_img, (SCREEN_WIDTH // 2 - start_img.get_width() // 2, 300))
 
+#function for drawing character selection page
+def draw_character_selection_page(start_img):
+    screen.fill((0, 0, 0))
+
+    start_width = 200  # desired width
+    start_height = int(start_img.get_height() * (start_width / start_img.get_width()))
+    start_img = pygame.transform.smoothscale(start_img, (start_width, start_height))
+    screen.blit(start_img, (SCREEN_WIDTH // 2 - start_img.get_width() // 2, 300))
+
 #create two instances of fighters
 fighter_1 = Fighter(1, 200, 310, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx)
-fighter_2 = Fighter(2, 700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
+fighter_2 = Fighter(2, 700, 310, True, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx)
+# fighter_2 = Fighter(2, 700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
 
 #game loop
 run = True
@@ -118,8 +128,22 @@ while run:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 300)).collidepoint(mouse_pos):
-                    game_started = True
-                    intro_count = 3
+                    character_selected = False
+
+                #checks for character selection
+                while not character_selected:
+                    draw_character_selection_page(start_img)
+                    pygame.display.update()
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            run = False
+                            character_selected = True
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            mouse_pos = pygame.mouse.get_pos()
+                            if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 300)).collidepoint(mouse_pos):
+                                game_started = True
+                                intro_count = 3
+                                character_selected = True
     else:
         #draw background
         draw_bg()
