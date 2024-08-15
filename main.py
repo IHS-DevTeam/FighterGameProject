@@ -31,24 +31,24 @@ ROUND_OVER_COOLDOWN = 2000
 game_started = False
 
 #load music and sounds
-pygame.mixer.music.load("FighterGameProject/assets/audio/music.mp3")
+pygame.mixer.music.load("assets/audio/music.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1, 0.0, 5000)
 
 #load background image
-bg_image = pygame.image.load("FighterGameProject/assets/images/background/background.jpg").convert_alpha()
+bg_image = pygame.image.load("assets/images/background/background.jpg").convert_alpha()
 
 #load victory image
-victory_img = pygame.image.load("FighterGameProject/assets/images/icons/victory.png").convert_alpha()
+victory_img = pygame.image.load("assets/images/icons/victory.png").convert_alpha()
 
 #load start page images
-start_img = pygame.image.load("FighterGameProject/assets/images/Start Page/start.png").convert_alpha()
-title_img = pygame.image.load("FighterGameProject/assets/images/Start Page/title.png").convert_alpha()
-frame_img = pygame.image.load("FighterGameProject/assets/images/Selection Page/frame.png").convert_alpha()
+start_img = pygame.image.load("assets/images/Start Page/start.png").convert_alpha()
+title_img = pygame.image.load("assets/images/Start Page/title.png").convert_alpha()
+frame_img = pygame.image.load("assets/images/Selection Page/frame.png").convert_alpha()
 
 #define font
-count_font = pygame.font.Font("FighterGameProject/assets/fonts/turok.ttf", 80)
-score_font = pygame.font.Font("FighterGameProject/assets/fonts/turok.ttf", 30)
+count_font = pygame.font.Font("assets/fonts/turok.ttf", 80)
+score_font = pygame.font.Font("assets/fonts/turok.ttf", 30)
 
 #function for drawing text
 def draw_text(text, font, text_col, x, y):
@@ -96,10 +96,10 @@ def draw_character_selection_page(start_img, frame_img):
     screen.blit(frame_img, (SCREEN_WIDTH // 3 - frame_img.get_width() // 2, 100))
     screen.blit(frame_img, (2 * SCREEN_WIDTH // 3 - frame_img.get_width() // 2, 100))
 
-    warrior_idle_sheet = pygame.image.load("FighterGameProject/assets/images/warrior/Sprites/idle.png").convert_alpha()
+    warrior_idle_sheet = pygame.image.load("assets/images/warrior/Sprites/idle.png").convert_alpha()
     warrior_idle_frames = idle_animation(warrior_idle_sheet, 10)
 
-    wizard_idle_sheet = pygame.image.load("FighterGameProject/assets/images/wizard/Sprites/idle.png").convert_alpha()
+    wizard_idle_sheet = pygame.image.load("assets/images/wizard/Sprites/idle.png").convert_alpha()
     wizard_idle_frames = idle_animation(wizard_idle_sheet, 8)
 
     # Draw idle animations for characters

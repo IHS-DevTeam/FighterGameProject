@@ -15,14 +15,14 @@ WIZARD_OFFSET = [112, 107]
 WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
 
 #musics
-sword_fx = pygame.mixer.Sound("FighterGameProject/assets/audio/sword.wav")
+sword_fx = pygame.mixer.Sound("assets/audio/sword.wav")
 sword_fx.set_volume(0.5)
-magic_fx = pygame.mixer.Sound("FighterGameProject/assets/audio/magic.wav")
+magic_fx = pygame.mixer.Sound("assets/audio/magic.wav")
 magic_fx.set_volume(0.75)
 
 #load spritesheets
-warrior_sheet = pygame.image.load("FighterGameProject/assets/images/warrior/Sprites/warrior.png").convert_alpha()
-wizard_sheet = pygame.image.load("FighterGameProject/assets/images/wizard/Sprites/wizard.png").convert_alpha()
+warrior_sheet = pygame.image.load("assets/images/warrior/Sprites/warrior.png").convert_alpha()
+wizard_sheet = pygame.image.load("assets/images/wizard/Sprites/wizard.png").convert_alpha()
 
 #define number of steps in each animation
 WARRIOR_ANIMATION_STEPS = [10, 8, 1, 7, 7, 3, 7]
