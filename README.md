@@ -16,10 +16,10 @@ URL: [https://www.pygame.org/news ](https://www.pygame.org/news)
 
 ## 3. Installing:
 
-1. Clone the git repo
+1. Clone the git repo (You can do this easily with Github Desktop)
 
 ```
-https://github.com/russs123/brawler_tut.git
+https://github.com/IHS-DevTeam/FighterGameProject
 ```
 
 2. Open project folder
@@ -35,17 +35,14 @@ Enjoy 😎
 
 ## 4. Contributing:
 
-Pull requests are welcome. 
-
-For major changes, please open an issue first to discuss what you would like to change with project owner (Coding With Russ).
-
+Make sure to talk to other club members before making any change!
 
 ## 5. Screen Recording:
 
 https://user-images.githubusercontent.com/15172744/190894691-c52ac22d-b76c-4890-9057-98eed66683a9.mp4
 
 
-## 6. Created By:
+## 6. Originally Created By:
 
 Name: Coding With Russ
 
@@ -55,5 +52,8 @@ Youtube: https://www.youtube.com/watch?v=s5bd9KMSSW4
 
 Github: https://github.com/russs123/brawler_tut
 
+## 7. Modified By:
+
+Name: IHS DevTeam
 
 
