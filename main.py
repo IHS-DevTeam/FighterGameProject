@@ -14,25 +14,14 @@ from util.image_loader import *
 #set framerate
 clock = pygame.time.Clock()
 
-
 pygame.display.set_caption("IHS Brawl")
-
-
-#define game variables
 
 last_count_update = pygame.time.get_ticks()
 
 #function for drawing background
-def draw_bg():
-    scaled_bg = pygame.transform.scale(bg_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
-    screen.blit(scaled_bg, (0, 0))
 
 #function for drawing fighter health bars
-def draw_health_bar(health, x, y):
-    ratio = health / 100
-    pygame.draw.rect(screen, WHITE, (x - 2, y - 2, 404, 34))
-    pygame.draw.rect(screen, RED, (x, y, 400, 30))
-    pygame.draw.rect(screen, YELLOW, (x, y, 400 * ratio, 30))
+
 
 #function for drawing start page
 def draw_start_page(title_img, start_img):
@@ -90,11 +79,11 @@ while run:
                                 character_selected = True
     else:
         #draw background
-        draw_bg()
+        draw_bg(screen)
 
         #show player stats
-        draw_health_bar(fighter_1.health, 20, 20)
-        draw_health_bar(fighter_2.health, 580, 20)
+        draw_health_bar(screen, fighter_1.health, 20, 20)
+        draw_health_bar(screen, fighter_2.health, 580, 20)
         draw_text(screen, "P1: " + str(score[0]), score_font, RED, 20, 60)
         draw_text(screen, "P2: " + str(score[1]), score_font, RED, 580, 60)
 
