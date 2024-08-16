@@ -4,7 +4,7 @@ from pygame import mixer
 mixer.init()
 pygame.init()
 
-from fighter import Fighter
+from util.fighter import Fighter
 
 WIZARD_SIZE = 250
 WIZARD_SCALE = 3
