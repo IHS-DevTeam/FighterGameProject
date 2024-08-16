@@ -30,7 +30,15 @@ class Fighter():
     self.hit = False
     self.health = 10
     self.alive = True
-
+    self.state = {
+      "idle":     0,
+      "run":      1, 
+      "jump":     2,
+      "attack1":  3,
+      "attack2":  4,
+      "hit":      5,
+      "death":    6
+    }
   def load_images(self, sprite_sheet, animation_steps):
     #extract images from spritesheet
     animation_list = []
@@ -137,20 +145,26 @@ class Fighter():
     if self.health <= 0:
       self.health = 0
       self.alive = False
-      self.update_action(6)#6:death
+      self.update_action(self.state["death"])
+
     elif self.hit == True:
-      self.update_action(5)#5:hit
+      self.update_action(self.state["hit"])#5:hit
+
     elif self.attacking == True:
       if self.attack_type == 1:
-        self.update_action(3)#3:attack1
+        self.update_action(self.state["attack1"])#3:attack1
+
       elif self.attack_type == 2:
-        self.update_action(4)#4:attack2
+        self.update_action(self.state["attack2"])#4:attack2
+
     elif self.jump == True:
-      self.update_action(2)#2:jump
+      self.update_action(self.state["jump"])#2:jump
+
     elif self.running == True:
-      self.update_action(1)#1:run
+      self.update_action(self.state["run"])#1:run
+
     else:
-      self.update_action(0)#0:idle
+      self.update_action(self.state["idle"])#0:idle
 
     animation_cooldown = 35
     #update image
