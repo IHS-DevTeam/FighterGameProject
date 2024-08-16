@@ -5,28 +5,7 @@ mixer.init()
 pygame.init()
 
 #define fighter variables
-WARRIOR_SIZE = 162
-WARRIOR_SCALE = 4
-WARRIOR_OFFSET = [72, 56]
-WARRIOR_DATA = [WARRIOR_SIZE, WARRIOR_SCALE, WARRIOR_OFFSET]
-WIZARD_SIZE = 250
-WIZARD_SCALE = 3
-WIZARD_OFFSET = [112, 107]
-WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
 
-#musics
-sword_fx = pygame.mixer.Sound("assets/audio/sword.wav")
-sword_fx.set_volume(0.5)
-magic_fx = pygame.mixer.Sound("assets/audio/magic.wav")
-magic_fx.set_volume(0.75)
-
-#load spritesheets
-warrior_sheet = pygame.image.load("assets/images/warrior/Sprites/warrior.png").convert_alpha()
-wizard_sheet = pygame.image.load("assets/images/wizard/Sprites/wizard.png").convert_alpha()
-
-#define number of steps in each animation
-WARRIOR_ANIMATION_STEPS = [10, 8, 1, 7, 7, 3, 7]
-WIZARD_ANIMATION_STEPS = [8, 8, 1, 8, 8, 3, 7]
 
 class Fighter():
   def __init__(self, player, x, y, flip, data, sprite_sheet, animation_steps, sound):
@@ -223,10 +202,4 @@ class Fighter():
     surface.blit(img, (self.rect.x - (self.offset[0] * self.image_scale), self.rect.y - (self.offset[1] * self.image_scale)))
 
 
-class Warrior(Fighter):
-  def __init__(self, player, x, y, flip):
-    super().__init__(player, x, y, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx)
 
-class Wizard(Fighter):
-  def __init__(self, player, x, y, flip):
-    super().__init__(player, x, y, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)

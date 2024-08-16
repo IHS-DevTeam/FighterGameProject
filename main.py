@@ -132,6 +132,8 @@ def idle_animation(idle_sprite_sheet, animation_steps):
         idle_animation_list.append(temp_img)
     return idle_animation_list
 
+from characters.warrior import Warrior
+from characters.wizzard import Wizard
 #create two instances of fighters
 # fighter_1 = Fighter(1, 200, 310, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx) -> Simplified with subclass
 fighter_1 = Warrior(1, 200, 310, False)
