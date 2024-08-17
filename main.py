@@ -30,7 +30,7 @@ from characters.wizzard import Wizard
 from characters.boogieman import Boogie_Man
 #create two instances of fighters
 # fighter_1 = Fighter(1, 200, 310, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx) -> Simplified with subclass
-fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False)
+fighter_1 = Warrior(1, FIGHTER_1_SPAWN_COORD, False)
 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, True)
 # fighter_2 = Fighter(2, 700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx) -> Simplified with subclass
 
@@ -90,6 +90,10 @@ while run:
         fighter_1.update()
         fighter_2.update()
 
+        #update coordinate for AIs
+        fighter_1.set_opponent_position(fighter_2.get_position())
+        fighter_2.set_opponent_position(fighter_1.get_position())
+
         #draw fighters
         fighter_1.draw(screen)
         fighter_2.draw(screen)
@@ -110,7 +114,7 @@ while run:
             if pygame.time.get_ticks() - round_over_time > ROUND_OVER_COOLDOWN:
                 round_over = False
                 intro_count = 3
-                fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False)
+                fighter_1 = Warrior(1, FIGHTER_1_SPAWN_COORD, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, True)
     #event handler
     for event in pygame.event.get():
