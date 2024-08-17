@@ -5,6 +5,20 @@ from util.image_loader import *
 '''
 All "draw_XXX" functions should all take 'screen' as their first arguement
 '''
+#function for drawing start page
+def draw_start_page(screen, title_img, start_img):
+    screen.fill((0, 0, 0))
+    # Scale down the title image and blit
+    title_width = 400  # desired width
+    title_height = int(title_img.get_height() * (title_width / title_img.get_width()))
+    title_img = pygame.transform.smoothscale(title_img, (title_width, title_height))
+    screen.blit(title_img, (SCREEN_WIDTH // 2 - title_img.get_width() // 2, 50))
+
+    start_width = 400  # desired width
+    start_height = int(start_img.get_height() * (start_width / start_img.get_width()))
+    start_img = pygame.transform.smoothscale(start_img, (start_width, start_height))
+    screen.blit(start_img, (SCREEN_WIDTH // 2 - start_img.get_width() // 2, 300))
+    
 def draw_health_bar(screen, health, x, y):
     ratio = health / 100
     pygame.draw.rect(screen, WHITE, (x - 2, y - 2, 404, 34))

@@ -11,6 +11,8 @@ from util.constants import *
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 from util.functioins import *
 from util.image_loader import *
+
+
 #set framerate
 clock = pygame.time.Clock()
 
@@ -18,24 +20,7 @@ pygame.display.set_caption("IHS Brawl")
 
 last_count_update = pygame.time.get_ticks()
 
-#function for drawing background
 
-#function for drawing fighter health bars
-
-
-#function for drawing start page
-def draw_start_page(title_img, start_img):
-    screen.fill((0, 0, 0))
-    # Scale down the title image and blit
-    title_width = 400  # desired width
-    title_height = int(title_img.get_height() * (title_width / title_img.get_width()))
-    title_img = pygame.transform.smoothscale(title_img, (title_width, title_height))
-    screen.blit(title_img, (SCREEN_WIDTH // 2 - title_img.get_width() // 2, 50))
-
-    start_width = 400  # desired width
-    start_height = int(start_img.get_height() * (start_width / start_img.get_width()))
-    start_img = pygame.transform.smoothscale(start_img, (start_width, start_height))
-    screen.blit(start_img, (SCREEN_WIDTH // 2 - start_img.get_width() // 2, 300))
 
 
 
@@ -44,8 +29,8 @@ from characters.warrior import Warrior
 from characters.wizzard import Wizard
 #create two instances of fighters
 # fighter_1 = Fighter(1, 200, 310, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx) -> Simplified with subclass
-fighter_1 = Warrior(1, 200, 310, False)
-fighter_2 = Wizard(2, 700, 310, True)
+fighter_1 = Warrior(1, (200, 310), False)
+fighter_2 = Wizard(2, (700, 310), True)
 # fighter_2 = Fighter(2, 700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx) -> Simplified with subclass
 
 #game loop
@@ -54,7 +39,7 @@ while run:
     clock.tick(FPS)
 
     if not game_started:
-        draw_start_page(title_img, start_img)
+        draw_start_page(screen, title_img, start_img)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -124,9 +109,8 @@ while run:
             if pygame.time.get_ticks() - round_over_time > ROUND_OVER_COOLDOWN:
                 round_over = False
                 intro_count = 3
-                fighter_1 = Warrior(1, 200, 310, False)
-                fighter_2 = Wizard(2, 700, 310, True)
-
+                fighter_1 = Warrior(1, (200, 310), False)
+                fighter_2 = Wizard(2, (700, 310), True)
     #event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
