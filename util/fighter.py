@@ -70,12 +70,32 @@ class Fighter():
     if self.attacking == False and self.alive == True and round_over == False:
       x_diff = self.rect.x - self.opponent_x
       if self.isAI == True:
-        if x_diff > 200:
-          dx = -SPEED
-          self.running = True
-        if x_diff < -200:
-          dx = SPEED
-          self.running = True
+        temp = random.random()
+        if temp < 0.5:
+          if x_diff > 200:
+            dx = -SPEED
+            self.running = True
+          if x_diff < -200:
+            dx = SPEED
+            self.running = True
+        elif temp < 0.52 and self.jump == False:
+          self.vel_y = -30
+          self.jump = True
+
+        else:
+          if x_diff > 200:
+            dx = -SPEED * 0.5
+            self.running = True
+          if x_diff < -200:
+            dx = SPEED * 0.5
+            self.running = True
+          if x_diff < 200 and x_diff > -200 and random.random() < 0.03:
+              self.attack(target)
+              #determine which attack type was used
+              if random.random() < 0.5:
+                self.attack_type = 1
+              else:
+                self.attack_type = 2
           
       #check player 1 controls
       if self.player == 1:
