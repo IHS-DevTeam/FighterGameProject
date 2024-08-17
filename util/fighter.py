@@ -5,11 +5,14 @@ import random
 mixer.init()
 pygame.init()
 
+
+# from util.projectile import * 
+
 #define fighter variables
 
 
 class Fighter():
-  def __init__(self, player, x, y, flip, data, sprite_sheet, animation_steps, sound, isAI):
+  def __init__(self, player, x, y, flip, data, sprite_sheet, animation_steps, sound, isAI,):
     self.player = player
     self.size = data[0]
     self.image_scale = data[1]
@@ -258,3 +261,10 @@ class Fighter():
     self.opponent_x, self.opponent_y = position
     
 
+  #getter function to see if player is flipped or not.
+  #used to determine the heading for projectile
+  def get_fliped(self):
+    return self.flip
+  
+  # def spawn_projectile(self):
+  #   return Projectile()
