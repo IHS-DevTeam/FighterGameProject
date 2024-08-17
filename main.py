@@ -24,12 +24,15 @@ last_count_update = pygame.time.get_ticks()
 from characters.warrior import Warrior
 from characters.wizzard import Wizard
 from characters.boogieman import Boogie_Man
-#create two instances of fighters
-fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
-
-fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, True)
 
 is_single_player = True;
+
+
+# Resize images once before the character selection loop
+start_img = pygame.transform.smoothscale(start_img, (200, int(start_img.get_height() * (200 / start_img.get_width()))))
+single_toggle_off = pygame.transform.smoothscale(single_toggle_off, (100, int(single_toggle_off.get_height() * (100 / single_toggle_off.get_width()))))
+single_toggle_on = pygame.transform.smoothscale(single_toggle_on, (100, int(single_toggle_on.get_height() * (100 / single_toggle_on.get_width()))))
+
 
 #game loop
 run = True
@@ -43,33 +46,44 @@ while run:
                 run = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 300)).collidepoint(mouse_pos):
-                    character_selected = False
+                character_selected = False
 
                 #checks for character selection
                 while not character_selected:
                     draw_character_selection_page(screen, start_img, frame_img)
                     draw_single_toggle(screen, single_toggle_on, single_toggle_off, is_single_player)
                     pygame.display.update()
+
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                             run = False
                             character_selected = True
                         if event.type == pygame.MOUSEBUTTONDOWN:
                             mouse_pos = pygame.mouse.get_pos()
-                            start_img = pygame.transform.smoothscale(start_img, (200, int(start_img.get_height() * (200 / start_img.get_width()))))
-                            single_toggle_img = pygame.transform.smoothscale(single_toggle_off, (100, int(single_toggle_off.get_height() * (200 / single_toggle_off.get_width()))))
+                            
+                            # Rect for start button
+                            start_img_rect = start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 450))
+                            # Rect for toggle button
+                            single_toggle_rect = pygame.Rect(SCREEN_WIDTH // 2 - single_toggle_off.get_width() // 2, 350, single_toggle_off.get_width(), single_toggle_off.get_height())
 
-                            if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 450)).collidepoint(mouse_pos):
+                            if start_img_rect.collidepoint(mouse_pos):
+                                # Start the game when start button is pressed
                                 game_started = True
                                 intro_count = 3
                                 character_selected = True
 
-                            elif single_toggle_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 350)).collidepoint(mouse_pos):
-                                is_single_player = not is_single_player # Reverse boolean value
+                            elif single_toggle_rect.collidepoint(mouse_pos):
+                                # Toggle single/multiplayer when toggle button is pressed
+                                is_single_player = not is_single_player
                                 draw_single_toggle(screen, single_toggle_on, single_toggle_off, is_single_player)
+
+                # Once character is selected and game starts, create two instances of fighters
+                fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
+                fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, is_single_player)
+
                                 
     else:
+
         #draw background
         draw_bg(screen)
 
