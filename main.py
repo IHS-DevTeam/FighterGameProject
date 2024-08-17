@@ -29,10 +29,9 @@ from characters.warrior import Warrior
 from characters.wizzard import Wizard
 from characters.boogieman import Boogie_Man
 #create two instances of fighters
-# fighter_1 = Fighter(1, 200, 310, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx) -> Simplified with subclass
-fighter_1 = Warrior(1, FIGHTER_1_SPAWN_COORD, False)
-fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, True)
-# fighter_2 = Fighter(2, 700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx) -> Simplified with subclass
+fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
+
+fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, False)
 
 #game loop
 run = True
@@ -114,8 +113,8 @@ while run:
             if pygame.time.get_ticks() - round_over_time > ROUND_OVER_COOLDOWN:
                 round_over = False
                 intro_count = 3
-                fighter_1 = Warrior(1, FIGHTER_1_SPAWN_COORD, False)
-                fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, True)
+                fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
+                fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, True, False)
     #event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
