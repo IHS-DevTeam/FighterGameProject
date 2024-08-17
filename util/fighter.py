@@ -67,6 +67,14 @@ class Fighter():
 
     #can only perform other actions if not currently attacking
     if self.attacking == False and self.alive == True and round_over == False:
+      if self.isAI == True:
+        if self.rect.x - self.opponent_x > 0:
+          dx = SPEED
+          self.running = True
+        if self.rect_x - self.opponent_x < 0:
+          dx = -SPEED
+          self.running = True
+          
       #check player 1 controls
       if self.player == 1:
         if self.isAI == False:
@@ -89,7 +97,6 @@ class Fighter():
               self.attack_type = 1
             if key[pygame.K_t]:
               self.attack_type = 2
-
 
       #check player 2 controls
       if self.player == 2:
