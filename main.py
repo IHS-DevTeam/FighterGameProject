@@ -9,7 +9,7 @@ from util.fighter import *
 from util.constants import *
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-from util.functioins import *
+from util.functions import *
 from util.image_loader import *
 
 
@@ -54,7 +54,7 @@ while run:
                             character_selected = True
                         if event.type == pygame.MOUSEBUTTONDOWN:
                             mouse_pos = pygame.mouse.get_pos()
-                            if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 300)).collidepoint(mouse_pos):
+                            if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 450)).collidepoint(mouse_pos):
                                 game_started = True
                                 intro_count = 3
                                 character_selected = True
