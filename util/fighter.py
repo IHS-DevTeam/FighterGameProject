@@ -92,7 +92,7 @@ class Fighter():
           if x_diff < -150:
             dx = SPEED * 0.5
             self.running = True
-          if x_diff < 150 and x_diff > -150 and random.random() < 0.03:
+          if x_diff < 150 and x_diff > -150 and random.random() < 0.08:
               self.attack(target)
               #determine which attack type was used
               if random.random() < 0.5:
