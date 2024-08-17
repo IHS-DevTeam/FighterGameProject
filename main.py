@@ -31,7 +31,7 @@ from characters.boogieman import Boogie_Man
 #create two instances of fighters
 fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
 
-fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, False)
+fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, True)
 
 #game loop
 run = True

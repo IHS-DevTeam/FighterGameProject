@@ -1,5 +1,6 @@
 import pygame
 from pygame import mixer
+import random
 
 mixer.init()
 pygame.init()
@@ -67,12 +68,13 @@ class Fighter():
 
     #can only perform other actions if not currently attacking
     if self.attacking == False and self.alive == True and round_over == False:
+      x_diff = self.rect.x - self.opponent_x
       if self.isAI == True:
-        if self.rect.x - self.opponent_x > 0:
-          dx = SPEED
-          self.running = True
-        if self.rect_x - self.opponent_x < 0:
+        if x_diff > 200:
           dx = -SPEED
+          self.running = True
+        if x_diff < -200:
+          dx = SPEED
           self.running = True
           
       #check player 1 controls
