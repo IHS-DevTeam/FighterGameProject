@@ -75,10 +75,10 @@ class Fighter():
       if self.isAI == True:
         temp = random.random()
         if temp < 0.5:
-          if x_diff > 200:
+          if x_diff >= 150:
             dx = -SPEED
             self.running = True
-          if x_diff < -200:
+          if x_diff <= -150:
             dx = SPEED
             self.running = True
         elif temp < 0.52 and self.jump == False:
@@ -86,13 +86,13 @@ class Fighter():
           self.jump = True
 
         else:
-          if x_diff > 200:
+          if x_diff > 150:
             dx = -SPEED * 0.5
             self.running = True
-          if x_diff < -200:
+          if x_diff < -150:
             dx = SPEED * 0.5
             self.running = True
-          if x_diff < 200 and x_diff > -200 and random.random() < 0.03:
+          if x_diff < 150 and x_diff > -150 and random.random() < 0.03:
               self.attack(target)
               #determine which attack type was used
               if random.random() < 0.5:

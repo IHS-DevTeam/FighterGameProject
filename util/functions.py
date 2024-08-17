@@ -34,11 +34,15 @@ def draw_text(screen, text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
-
+def draw_single_toggle(screen, single_toggle_on, single_toggle_off, is_single_player):
+    toggle_width = 100 # desired width
+    toggle_height = int(single_toggle_off.get_height() * (toggle_width / single_toggle_off.get_width()))
+    single_toggle_off = pygame.transform.smoothscale(single_toggle_off, (toggle_width, toggle_height))
+    screen.blit(single_toggle_off, (SCREEN_WIDTH // 2 - toggle_width // 2, 350))
 
 
 #function for drawing character selection page
-def draw_character_selection_page(screen, start_img, frame_img):
+def draw_character_selection_page(screen, start_img, frame_img, single_toggle_on, single_toggle_off):
     screen.fill((0, 0, 0))
 
     start_width = 200  # desired width
@@ -51,11 +55,6 @@ def draw_character_selection_page(screen, start_img, frame_img):
     frame_img = pygame.transform.smoothscale(frame_img, (frame_width, frame_height))
     screen.blit(frame_img, (SCREEN_WIDTH // 3 - frame_img.get_width() // 2, 100))
     screen.blit(frame_img, (2 * SCREEN_WIDTH // 3 - frame_img.get_width() // 2, 100))
-
-    toggle_width = 100 # desired width
-    toggle_height = int(single_toggle_img.get_height() * (toggle_width / single_toggle_img.get_width()))
-    single_toggle_img = pygame.transform.smoothscale(single_toggle_img, (toggle_width, toggle_height))
-    screen.blit(single_toggle_img, (SCREEN_WIDTH // 2 - toggle_width // 2, 350))
 
     warrior_idle_sheet = pygame.image.load("assets/images/warrior/Sprites/idle.png").convert_alpha()
     warrior_idle_frames = idle_animation(warrior_idle_sheet, 10)

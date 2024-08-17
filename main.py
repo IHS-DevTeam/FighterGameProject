@@ -48,7 +48,8 @@ while run:
 
                 #checks for character selection
                 while not character_selected:
-                    draw_character_selection_page(screen, start_img, frame_img)
+                    draw_character_selection_page(screen, start_img, frame_img, single_toggle_on, single_toggle_off)
+                    draw_single_toggle(screen, single_toggle_on, single_toggle_off, False)
                     pygame.display.update()
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
@@ -57,12 +58,17 @@ while run:
                         if event.type == pygame.MOUSEBUTTONDOWN:
                             mouse_pos = pygame.mouse.get_pos()
                             start_img = pygame.transform.smoothscale(start_img, (200, int(start_img.get_height() * (200 / start_img.get_width()))))
+                            single_toggle_img = pygame.transform.smoothscale(single_toggle_off, (100, int(single_toggle_off.get_height() * (200 / single_toggle_off.get_width()))))
+
                             if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 450)).collidepoint(mouse_pos):
                                 game_started = True
                                 intro_count = 3
                                 character_selected = True
-                            if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 450)).collidepoint(mouse_pos):
+
+                            elif single_toggle_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 350)).collidepoint(mouse_pos):
                                 is_single_player = not is_single_player # Reverse boolean value
+                                draw_single_toggle(screen, single_toggle_on, single_toggle_off, is_single_player)
+                                
     else:
         #draw background
         draw_bg(screen)
