@@ -36,13 +36,19 @@ def draw_text(screen, text, font, text_col, x, y):
 
 def draw_single_toggle(screen, single_toggle_on, single_toggle_off, is_single_player):
     toggle_width = 100 # desired width
-    toggle_height = int(single_toggle_off.get_height() * (toggle_width / single_toggle_off.get_width()))
-    single_toggle_off = pygame.transform.smoothscale(single_toggle_off, (toggle_width, toggle_height))
-    screen.blit(single_toggle_off, (SCREEN_WIDTH // 2 - toggle_width // 2, 350))
+    toggle_height = int(single_toggle_on.get_height() * (toggle_width / single_toggle_on.get_width()))
+
+    if(is_single_player):
+        single_toggle_on = pygame.transform.smoothscale(single_toggle_on, (toggle_width, toggle_height))
+        screen.blit(single_toggle_on, (SCREEN_WIDTH // 2 - toggle_width // 2, 350))
+    if(not is_single_player):
+        single_toggle_off = pygame.transform.smoothscale(single_toggle_off, (toggle_width, toggle_height))
+        screen.blit(single_toggle_off, (SCREEN_WIDTH // 2 - toggle_width // 2, 350))
+
 
 
 #function for drawing character selection page
-def draw_character_selection_page(screen, start_img, frame_img, single_toggle_on, single_toggle_off):
+def draw_character_selection_page(screen, start_img, frame_img):
     screen.fill((0, 0, 0))
 
     start_width = 200  # desired width

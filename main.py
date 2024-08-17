@@ -29,7 +29,7 @@ fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
 
 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, True)
 
-is_single_player = False;
+is_single_player = True;
 
 #game loop
 run = True
@@ -48,8 +48,8 @@ while run:
 
                 #checks for character selection
                 while not character_selected:
-                    draw_character_selection_page(screen, start_img, frame_img, single_toggle_on, single_toggle_off)
-                    draw_single_toggle(screen, single_toggle_on, single_toggle_off, False)
+                    draw_character_selection_page(screen, start_img, frame_img)
+                    draw_single_toggle(screen, single_toggle_on, single_toggle_off, is_single_player)
                     pygame.display.update()
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
