@@ -21,10 +21,6 @@ pygame.display.set_caption("IHS Brawl")
 last_count_update = pygame.time.get_ticks()
 
 
-
-
-
-
 from characters.warrior import Warrior
 from characters.wizzard import Wizard
 from characters.boogieman import Boogie_Man
