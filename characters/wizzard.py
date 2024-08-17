@@ -27,4 +27,4 @@ WIZARD_ANIMATION_STEPS = [8, 8, 1, 8, 8, 3, 7]
 class Wizard(Fighter):
   def __init__(self, player, cord, flip):
     Spawn_X, Spawn_Y = cord
-    super().__init__(player, Spawn_X, Spawn_Y, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
+    super().__init__(player, Spawn_X, Spawn_Y, flip, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
