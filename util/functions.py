@@ -44,13 +44,19 @@ def draw_character_selection_page(screen, start_img, frame_img):
     start_width = 200  # desired width
     start_height = int(start_img.get_height() * (start_width / start_img.get_width()))
     start_img = pygame.transform.smoothscale(start_img, (start_width, start_height))
-    screen.blit(start_img, (SCREEN_WIDTH // 2 - start_img.get_width() // 2, 400))
+    screen.blit(start_img, (SCREEN_WIDTH // 2 - start_img.get_width() // 2, 450))
 
     frame_width = 200  # desired width
     frame_height = int(frame_img.get_height() * (frame_width / frame_img.get_width()))
     frame_img = pygame.transform.smoothscale(frame_img, (frame_width, frame_height))
     screen.blit(frame_img, (SCREEN_WIDTH // 3 - frame_img.get_width() // 2, 100))
     screen.blit(frame_img, (2 * SCREEN_WIDTH // 3 - frame_img.get_width() // 2, 100))
+
+    single_toggle_img = pygame.image.load("assets/images/Selection Page/single_off.png").convert_alpha()
+    toggle_width = 100 # desired width
+    toggle_height = int(single_toggle_img.get_height() * (toggle_width / single_toggle_img.get_width()))
+    single_toggle_img = pygame.transform.smoothscale(single_toggle_img, (toggle_width, toggle_height))
+    screen.blit(single_toggle_img, (SCREEN_WIDTH // 2 - toggle_width // 2, 350))
 
     warrior_idle_sheet = pygame.image.load("assets/images/warrior/Sprites/idle.png").convert_alpha()
     warrior_idle_frames = idle_animation(warrior_idle_sheet, 10)
