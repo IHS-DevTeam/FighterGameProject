@@ -40,6 +40,9 @@ class Fighter():
       "death":    6
     }
     self.isAI = isAI
+    self.opponent_x = 0
+    self.opponent_y = 0
+
   def load_images(self, sprite_sheet, animation_steps):
     #extract images from spritesheet
     animation_list = []
@@ -50,7 +53,6 @@ class Fighter():
         temp_img_list.append(pygame.transform.scale(temp_img, (self.size * self.image_scale, self.size * self.image_scale)))
       animation_list.append(temp_img_list)
     return animation_list
-
 
   def move(self, screen_width, screen_height, surface, target, round_over):
     SPEED = 10
@@ -221,4 +223,9 @@ class Fighter():
   #planned for versus AI single player mode
   def get_position(self):
     return (self.rect.x, self.rect.y)
+  
+  #gets tuple of x and y coordinate as input
+  def set_opponent_position(self, position):
+    self.opponent_x, self.opponent_y = position
+    
 

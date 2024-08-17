@@ -89,6 +89,10 @@ while run:
         fighter_1.update()
         fighter_2.update()
 
+        #update coordinate for AIs
+        fighter_1.set_opponent_position(fighter_2.get_position())
+        fighter_2.set_opponent_position(fighter_1.get_position())
+
         #draw fighters
         fighter_1.draw(screen)
         fighter_2.draw(screen)
