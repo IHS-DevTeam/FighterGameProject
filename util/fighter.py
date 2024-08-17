@@ -215,5 +215,7 @@ class Fighter():
     img = pygame.transform.flip(self.image, self.flip, False)
     surface.blit(img, (self.rect.x - (self.offset[0] * self.image_scale), self.rect.y - (self.offset[1] * self.image_scale)))
 
-
+  #planned for versus AI single player mode
+  def get_position(self):
+    return (self.rect.x, self.rect.y)
 
