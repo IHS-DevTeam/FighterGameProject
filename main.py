@@ -29,6 +29,8 @@ fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
 
 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, True)
 
+is_single_player = False;
+
 #game loop
 run = True
 while run:
@@ -54,10 +56,13 @@ while run:
                             character_selected = True
                         if event.type == pygame.MOUSEBUTTONDOWN:
                             mouse_pos = pygame.mouse.get_pos()
+                            start_img = pygame.transform.smoothscale(start_img, (200, int(start_img.get_height() * (200 / start_img.get_width()))))
                             if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 450)).collidepoint(mouse_pos):
                                 game_started = True
                                 intro_count = 3
                                 character_selected = True
+                            if start_img.get_rect(topleft=(SCREEN_WIDTH // 2 - start_img.get_width() // 2, 450)).collidepoint(mouse_pos):
+                                is_single_player = not is_single_player # Reverse boolean value
     else:
         #draw background
         draw_bg(screen)

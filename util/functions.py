@@ -52,7 +52,6 @@ def draw_character_selection_page(screen, start_img, frame_img):
     screen.blit(frame_img, (SCREEN_WIDTH // 3 - frame_img.get_width() // 2, 100))
     screen.blit(frame_img, (2 * SCREEN_WIDTH // 3 - frame_img.get_width() // 2, 100))
 
-    single_toggle_img = pygame.image.load("assets/images/Selection Page/single_off.png").convert_alpha()
     toggle_width = 100 # desired width
     toggle_height = int(single_toggle_img.get_height() * (toggle_width / single_toggle_img.get_width()))
     single_toggle_img = pygame.transform.smoothscale(single_toggle_img, (toggle_width, toggle_height))

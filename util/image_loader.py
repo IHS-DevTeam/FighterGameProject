@@ -7,11 +7,11 @@ bg_image = pygame.image.load("assets/images/background/background.jpg").convert_
 #load victory image
 victory_img = pygame.image.load("assets/images/icons/victory.png").convert_alpha()
 
-#load start page images
+#load start and character selection page images
 start_img = pygame.image.load("assets/images/Start Page/start.png").convert_alpha()
 title_img = pygame.image.load("assets/images/Start Page/title.png").convert_alpha()
 frame_img = pygame.image.load("assets/images/Selection Page/frame.png").convert_alpha()
-
+single_toggle_img = pygame.image.load("assets/images/Selection Page/single_off.png").convert_alpha()
 
 
 #load music and sounds
