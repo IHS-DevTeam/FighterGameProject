@@ -19,3 +19,7 @@ FPS = 60
 
 #time delay before each match starts
 intro_count = 3
+
+
+FIGHTER_1_SPAWN_COORD = (200, 310)
+FIGHTER_2_SPAWN_COORD = (700, 310)
