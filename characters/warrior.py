@@ -19,5 +19,5 @@ warrior_sheet = pygame.image.load("assets/images/warrior/Sprites/warrior.png").c
 WARRIOR_ANIMATION_STEPS = [10, 8, 1, 7, 7, 3, 7]
 class Warrior(Fighter):
   def __init__(self, player, cord, flip, isAI):
-    Spawn_X, Spawn_Y = cord
-    super().__init__(player, Spawn_X, Spawn_Y, flip, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx, isAI)
+    
+    super().__init__(player, cord, flip, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx, isAI)

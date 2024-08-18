@@ -19,5 +19,5 @@ warrior_sheet = pygame.image.load("assets/images/boogie_man/Sprits/Boogie_Man.pn
 WARRIOR_ANIMATION_STEPS = [4, 4, 1, 3, 3, 3, 3]
 class Boogie_Man(Fighter):
   def __init__(self, player, cord, flip, isAI):
-    Spawn_X, Spawn_Y = cord
-    super().__init__(player, Spawn_X, Spawn_Y, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx, isAI)
+    
+    super().__init__(player, cord, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx, isAI)

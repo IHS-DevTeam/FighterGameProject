@@ -12,18 +12,28 @@ pygame.init()
 
 
 class Fighter():
-  def __init__(self, player, x, y, flip, data, sprite_sheet, animation_steps, sound, isAI,):
+  def __init__(self, player, cord, flip, data, sprite_sheet, animation_steps, sound, isAI,):
     self.player = player
     self.size = data[0]
     self.image_scale = data[1]
     self.offset = data[2]
     self.flip = flip
     self.animation_list = self.load_images(sprite_sheet, animation_steps)
-    self.action = 0#0:idle #1:run #2:jump #3:attack1 #4: attack2 #5:hit #6:death
+    self.state = {
+      "idle":     0,
+      "run":      1, 
+      "jump":     2,
+      "attack1":  3,
+      "attack2":  4,
+      "hit":      5,
+      "death":    6
+    }
+    self.action = self.state["idle"]
     self.frame_index = 0
     self.image = self.animation_list[self.action][self.frame_index]
     self.update_time = pygame.time.get_ticks()
-    self.rect = pygame.Rect((x, y, 80, 180))
+    self.x, self.y = cord
+    self.rect = pygame.Rect((self.x, self.y, 80, 180))
     self.vel_y = 0
     self.running = False
     self.jump = False
@@ -34,15 +44,6 @@ class Fighter():
     self.hit = False
     self.health = 100
     self.alive = True
-    self.state = {
-      "idle":     0,
-      "run":      1, 
-      "jump":     2,
-      "attack1":  3,
-      "attack2":  4,
-      "hit":      5,
-      "death":    6
-    }
     self.isAI = isAI
     self.opponent_x = 0
     self.opponent_y = 0
@@ -72,6 +73,8 @@ class Fighter():
     #can only perform other actions if not currently attacking
     if self.attacking == False and self.alive == True and round_over == False:
       x_diff = self.rect.x - self.opponent_x
+
+      #AI control Logic
       if self.isAI == True:
         temp = random.random()
         if temp < 0.5:
