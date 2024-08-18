@@ -15,5 +15,3 @@ class Projectile():
         }
         self.image_scale = data[1]
         self.offset = data[2]
-        
-
