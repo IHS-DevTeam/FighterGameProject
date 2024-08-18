@@ -3,3 +3,10 @@ __pycache__/fighter.cpython-311.pyc
 __pycache__/fighter.cpython-310.pyc
 __pycache__/fighter.cpython-310.pyc
 __pycache__/fighter.cpython-310.pyc
+characters/__pycache__/boogieman.cpython-310.pyc
+characters/__pycache__/warrior.cpython-310.pyc
+characters/__pycache__/wizzard.cpython-310.pyc
+util/__pycache__/constants.cpython-310.pyc
+util/__pycache__/fighter.cpython-310.pyc
+util/__pycache__/functions.cpython-310.pyc
+util/__pycache__/image_loader.cpython-310.pyc
