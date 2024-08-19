@@ -61,7 +61,7 @@ class Projectile():
         SPEED = 10
         dx = 1
         dy = 2
-        GRAVITY = 1
+        GRAVITY = 10
 
 
         #apply gravity 
@@ -88,8 +88,12 @@ class Projectile():
         self.rect.y += dy
 
     def draw(self, surface):
+        RED = (255,0,0)
+        pygame.draw.rect(surface, RED, (self.rect.x, self.rect.y, self.rect.width, self.rect.height))
+
         img = pygame.transform.flip(self.image, self.flip, False)
         surface.blit(img, (self.rect.x - (self.offset[0] * self.image_scale), self.rect.y - (self.offset[1] * self.image_scale)))
+
 
     def update_action(self, new_action):
         #check if the new action is different to the previous one

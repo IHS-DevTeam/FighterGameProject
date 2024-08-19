@@ -32,8 +32,9 @@ last_count_update = pygame.time.get_ticks()
 from characters.warrior import Warrior
 from characters.wizzard import Wizard
 from characters.boogieman import Boogie_Man
+from characters.fire_ball import * 
 
-is_single_player = True;
+is_single_player = True
 
 
 # Resize images once before the character selection loop
@@ -84,10 +85,12 @@ while run:
                                 # Toggle single/multiplayer when toggle button is pressed
                                 is_single_player = not is_single_player
                                 draw_single_toggle(screen, single_toggle_on, single_toggle_off, is_single_player)
+                        
 
                 # Once character is selected and game starts, create two instances of fighters
                 fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, is_single_player)
+                test_projectile = Fire_Ball((100,350), False, fighter_2)
 
                                 
     else:
@@ -120,7 +123,13 @@ while run:
         #update fighters
         fighter_1.update()
         fighter_2.update()
+        test_projectile.update()
 
+        # for event in pygame.event.get():
+        #     if event.type == pygame.KEYDOWN:
+        #         if event.key == pygame.K_r:
+        #             a = Fire_Ball(fighter_1.get_position(), fighter_1.get_fliped(), fighter_2)
+        #             PROJECTILE_LIST.append(a)
 
         #if there's projectile on the screens
         '''
@@ -136,6 +145,8 @@ while run:
                         if current_projectile.ready_to_be_removed() == True:
                             
                             PROJECTILE_LIST.remove(i)
+                    else:
+                        print("FF")
                     print(len(PROJECTILE_LIST))
         else:
             print("No projectile")
@@ -150,6 +161,7 @@ while run:
         #draw fighters
         fighter_1.draw(screen)
         fighter_2.draw(screen)
+        test_projectile.draw(screen)
 
         #check for player defeat
         if not round_over:
