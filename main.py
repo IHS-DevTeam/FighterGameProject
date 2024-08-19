@@ -10,13 +10,11 @@ from util.constants import *
 from util.projectile import * 
 
 
-# screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.HWSURFACE | pygame.DOUBLEBUF)
-
-# screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.FULLSCREEN | pygame.HWSURFACE | pygame.DOUBLEBUF)
 
 from util.functions import *
 from util.image_loader import *
+
 
 
 #set framerate
@@ -29,7 +27,6 @@ last_count_update = pygame.time.get_ticks()
 
 from characters.warrior import Warrior
 from characters.wizzard import Wizard
-from characters.boogieman import Boogie_Man
 
 is_single_player = True;
 
@@ -84,7 +81,7 @@ while run:
                                 draw_single_toggle(screen, single_toggle_on, single_toggle_off, is_single_player)
 
                 # Once character is selected and game starts, create two instances of fighters
-                fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
+                fighter_1 = Warrior(1, FIGHTER_1_SPAWN_COORD, False, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, is_single_player)
 
                                 
@@ -104,6 +101,7 @@ while run:
             #move fighters
             fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2, round_over)
             fighter_2.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_1, round_over)
+            
         else:
             #display count timer
             draw_text(screen, str(intro_count), count_font, RED, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3)
@@ -117,16 +115,7 @@ while run:
         fighter_2.update()
 
 
-        #if there's projectile on the screens
-        '''
-        TODO: finish the animation before the instance is removed
-        '''
-        if len(PROJECTILE_LIST) > 0:
-            for i in range(0, len(PROJECTILE_LIST)):
-                if PROJECTILE_LIST[i].hit_stuff == True:
-                    PROJECTILE_LIST.remove(i)
-                PROJECTILE_LIST[i].update()
-                PROJECTILE_LIST[i].draw(screen)
+
 
 
         #update coordinate for AIs
@@ -153,7 +142,7 @@ while run:
             if pygame.time.get_ticks() - round_over_time > ROUND_OVER_COOLDOWN:
                 round_over = False
                 intro_count = 3
-                fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
+                fighter_1 = Warrior(1, FIGHTER_1_SPAWN_COORD, False, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, True, is_single_player)
     #event handler
     for event in pygame.event.get():

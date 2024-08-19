@@ -5,7 +5,10 @@ mixer.init()
 pygame.init()
 
 from util.fighter import Fighter
+from characters.fire_ball import * 
 
+from util.constants import *
+from util.projectile_list import *
 WARRIOR_SIZE = 160
 WARRIOR_SCALE = 2
 WARRIOR_OFFSET = [72, 56]
@@ -21,3 +24,11 @@ class Boogie_Man(Fighter):
   def __init__(self, player, cord, flip, isAI):
     
     super().__init__(player, cord, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx, isAI)
+  
+  def update(self):
+    super().update()
+
+    if self.action ==3 and self.ready_to_attack():
+      curret_projectile = Fire_Ball(self.get_position(), self.get_fliped(), self.get_target())
+      PROJECTILE_LIST.append(curret_projectile)
+      print("Tried")

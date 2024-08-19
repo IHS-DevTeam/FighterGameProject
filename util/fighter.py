@@ -47,6 +47,7 @@ class Fighter():
     self.isAI = isAI
     self.opponent_x = 0
     self.opponent_y = 0
+    self.target = None
 
   def load_images(self, sprite_sheet, animation_steps):
     #extract images from spritesheet
@@ -179,6 +180,9 @@ class Fighter():
     self.rect.y += dy
 
 
+    self.target = target
+
+
   #handle animation updates
   def update(self):
     #check what action the player is performing
@@ -268,6 +272,12 @@ class Fighter():
   #used to determine the heading for projectile
   def get_fliped(self):
     return self.flip
+  
+  def get_target(self):
+    return self.target
+  
+  def ready_to_attack(self):
+    return (self.attack_cooldown == 0)
   
   # def spawn_projectile(self):
   #   return Projectile()
