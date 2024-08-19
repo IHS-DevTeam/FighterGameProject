@@ -16,6 +16,7 @@ class Projectile():
         }
         self.animation_list = self.load_iamges(sprite_sheet, animation_steps)
         self.image = self.animation_list[self.action][self.frame_index]
+        self.update_time = pygame.time.get_ticks()
         self.hit_stuff = False
         self.action = 0
         self.frame_index = 0
@@ -114,24 +115,19 @@ class Projectile():
         if pygame.time.get_ticks() - self.update_time > animation_cooldown:
             self.frame_index += 1
             self.update_time = pygame.time.get_ticks()
+
         #check if the animation has finished
         if self.frame_index >= len(self.animation_list[self.action]):
             #if the player is dead then end the animation
             if self.hit_stuff == True:
                 '''
                 When the projectile hit something, either wall/groud/enemy
+                And when the destruct animation is called
+                turn the projectile image to blank
+                and wait to be removed from projectile list
 
                 '''
-                self.frame_index = len(self.animation_list[self.action]) -1
+                self.frame_index = len(self.animation_list[self.action])
             else:
                 self.frame_index = 0
-                #check if an attack was executed
-                if self.action == 3 or self.action == 4:
-                    self.attacking = False
-                    self.attack_cooldown = 20
-                #check if damage was taken
-                if self.action == 5:
-                    self.hit = False
-                    #if the player was in the middle of an attack, then the attack is stopped
-                    self.attacking = False
-                    self.attack_cooldown = 20
+                
