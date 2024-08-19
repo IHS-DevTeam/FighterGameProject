@@ -49,7 +49,7 @@ class Boogie_Man(Fighter):
           target.health -= 10
           target.hit = True
       elif self.get_attack_type() == 1:
-        current_projectile = Fire_Ball(self.get_position(), self.get_fliped(), target)
+        current_projectile = Fire_Ball(self.get_center(), self.get_fliped(), target)
         PROJECTILE_LIST.append(current_projectile)
         # print("Add_Fireball:  " + str(len(PROJECTILE_LIST)) + " " + str(type(current_projectile)) )
 

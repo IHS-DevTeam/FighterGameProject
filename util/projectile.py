@@ -59,8 +59,13 @@ class Projectile():
     def move(self, screen_width, screen_height):
         SPEED = 50
         dx = 10
-        dy = 2
-        GRAVITY = 10
+
+        if self.flip:
+            dx *= -1
+        # dy = 2
+        # GRAVITY = 10
+        dy = 100
+        GRAVITY = 0.1
 
 
         #apply gravity 
@@ -115,6 +120,7 @@ class Projectile():
         if self.frame_index >= len(self.animation_list[self.action]):
             #if the projectile hit stuff, let the image freeze as the last image
             if self.hit_stuff == True:
+                self.action = self.state["hit_stuff"]
                 self.frame_index = len(self.animation_list[self.action]) -1
                 self.ready_to_be_removed = True
         

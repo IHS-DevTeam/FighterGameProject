@@ -123,15 +123,7 @@ while run:
         #update fighters
         fighter_1.update()
         fighter_2.update()
-        # test_projectile.update()
-
-        # for event in pygame.event.get():
-        #     if event.type == pygame.KEYDOWN:
-        #         if event.key == pygame.K_r:
-        #             a = Fire_Ball(fighter_1.get_position(), fighter_1.get_fliped(), fighter_2)
-        #             PROJECTILE_LIST.append(a)
-
-        #if there's projectile on the screens
+        
         '''
         TODO: finish the animation before the instance is removed
         '''
@@ -142,13 +134,7 @@ while run:
                   
                     current_projectile.update()
                     current_projectile.draw(screen)
-                        # if current_projectile.ready_to_be_removed() == True:
-                            
-                        #     PROJECTILE_LIST.remove(i)
-                   
-                    # print(type(current_projectile))
-        # else:
-            # print("No projectile")
+
 
                
 
@@ -181,6 +167,7 @@ while run:
                 intro_count = 3
                 fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, True, is_single_player)
+                PROJECTILE_LIST = []
     #event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

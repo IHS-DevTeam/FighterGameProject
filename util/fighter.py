@@ -285,5 +285,8 @@ class Fighter():
   def ready_to_attack(self):
     return (self.attack_cooldown == 0)
   
+  def get_center(self):
+    return (self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y + self.rect.height/2)
+  
   # def spawn_projectile(self):
   #   return Projectile()
