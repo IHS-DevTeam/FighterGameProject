@@ -90,7 +90,7 @@ while run:
                 # Once character is selected and game starts, create two instances of fighters
                 fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, is_single_player)
-                test_projectile = Fire_Ball((100,350), False, fighter_2)
+                # test_projectile = Fire_Ball((100,350), False, fighter_2)
 
                                 
     else:
@@ -123,7 +123,7 @@ while run:
         #update fighters
         fighter_1.update()
         fighter_2.update()
-        test_projectile.update()
+        # test_projectile.update()
 
         # for event in pygame.event.get():
         #     if event.type == pygame.KEYDOWN:
@@ -136,20 +136,20 @@ while run:
         TODO: finish the animation before the instance is removed
         '''
         if len(PROJECTILE_LIST) > 0:
+            # print("Got shit")
             for i in range(0, len(PROJECTILE_LIST)):
                     current_projectile = PROJECTILE_LIST[i]
-                    if type(current_projectile) == Projectile:
-                        print("Right type")
-                        current_projectile.update()
-                        current_projectile.draw(screen)
-                        if current_projectile.ready_to_be_removed() == True:
+                  
+                    current_projectile.update()
+                    current_projectile.draw(screen)
+                        # if current_projectile.ready_to_be_removed() == True:
                             
-                            PROJECTILE_LIST.remove(i)
-                    else:
-                        print("FF")
-                    print(len(PROJECTILE_LIST))
-        else:
-            print("No projectile")
+                        #     PROJECTILE_LIST.remove(i)
+                   
+                    # print(type(current_projectile))
+        # else:
+            # print("No projectile")
+
                
 
 
@@ -161,7 +161,7 @@ while run:
         #draw fighters
         fighter_1.draw(screen)
         fighter_2.draw(screen)
-        test_projectile.draw(screen)
+        # test_projectile.draw(screen)
 
         #check for player defeat
         if not round_over:

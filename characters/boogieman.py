@@ -27,16 +27,17 @@ class Boogie_Man(Fighter):
     
     super().__init__(player, cord, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx, isAI)
   
-  def update(self):
-    super().update()
+  # def update(self):
+  #   super().update()
 
-    if self.action ==3 and self.ready_to_attack():
-      curret_projectile = Fire_Ball(self.get_position(), self.get_fliped(), self.get_target())
-      PROJECTILE_LIST.append(curret_projectile)
-      print("Tried")
+  #   if self.action ==3 and self.ready_to_attack():
+  #     curret_projectile = Fire_Ball(self.get_position(), self.get_fliped(), self.get_target())
+  #     PROJECTILE_LIST.append(curret_projectile)
+  #     print("Tried")
 
 
 
+  #override the attack method
   def attack(self, target):
     if self.attack_cooldown == 0:
       #execute attack
@@ -48,4 +49,7 @@ class Boogie_Man(Fighter):
           target.health -= 10
           target.hit = True
       elif self.get_attack_type() == 1:
-        PROJECTILE_LIST.append(Fire_Ball(self.get_position(), self.get_fliped(), target))
+        current_projectile = Fire_Ball(self.get_position(), self.get_fliped(), target)
+        PROJECTILE_LIST.append(current_projectile)
+        # print("Add_Fireball:  " + str(len(PROJECTILE_LIST)) + " " + str(type(current_projectile)) )
+
