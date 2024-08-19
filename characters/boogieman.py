@@ -36,3 +36,16 @@ class Boogie_Man(Fighter):
       print("Tried")
 
 
+
+  def attack(self, target):
+    if self.attack_cooldown == 0:
+      #execute attack
+      self.attacking = True
+      self.attack_sound.play()
+      attacking_rect = pygame.Rect(self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y, 2 * self.rect.width, self.rect.height)
+      if self.get_attack_type() == 2:
+        if attacking_rect.colliderect(target.rect):
+          target.health -= 10
+          target.hit = True
+      elif self.get_attack_type() == 1:
+        PROJECTILE_LIST.append(Fire_Ball(self.get_position(), self.get_fliped(), target))

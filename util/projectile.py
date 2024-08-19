@@ -24,7 +24,6 @@ class Projectile():
         self.hit_stuff = False
         self.action = 0
         self.frame_index = 0
-        self.flying = True
         self.hit_stuff = False
         self.rect = pygame.Rect((self.spawn_x, self.spawn_y, 30,30))
         self.image_scale = data[1]
@@ -58,8 +57,8 @@ class Projectile():
 
     #this should be constantly calleds
     def move(self, screen_width, screen_height):
-        SPEED = 10
-        dx = 1
+        SPEED = 50
+        dx = 10
         dy = 2
         GRAVITY = 10
 
@@ -156,20 +155,4 @@ class Projectile():
         
 
 
-
-# 
-#         #check if the animation has finished
-#         if self.frame_index >= len(self.animation_list[self.action]):
-#             #if the player is dead then end the animation
-#             if self.hit_stuff == True:
-#                 '''
-#                 When the projectile hit something, either wall/groud/enemy
-#                 And when the destruct animation is called
-#                 turn the projectile image to blank
-#                 and wait to be removed from projectile list
-
-#                 '''
-#                 self.frame_index = len(self.animation_list[self.action])
-#             else:
-#                 self.frame_index = 0
                 

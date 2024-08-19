@@ -15,7 +15,7 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 600
 
 
-FPS = 60
+FPS = 5
 
 #time delay before each match starts
 intro_count = 3

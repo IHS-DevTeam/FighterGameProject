@@ -42,7 +42,7 @@ class Fighter():
     self.attack_cooldown = 0
     self.attack_sound = sound
     self.hit = False
-    self.health = 100
+    self.health = 10
     self.alive = True
     self.isAI = isAI
     self.opponent_x = 0
@@ -60,6 +60,9 @@ class Fighter():
       animation_list.append(temp_img_list)
     return animation_list
 
+  def get_attack_type(self):
+    return self.attack_type
+  
   def move(self, screen_width, screen_height, surface, target, round_over):
     SPEED = 10
     GRAVITY = 2
@@ -120,12 +123,13 @@ class Fighter():
             self.jump = True
           #attack
           if key[pygame.K_r] or key[pygame.K_t]:
-            self.attack(target)
-            #determine which attack type was used
             if key[pygame.K_r]:
               self.attack_type = 1
             if key[pygame.K_t]:
               self.attack_type = 2
+
+            self.attack(target)
+            #determine which attack type was used
 
       #check player 2 controls
       if self.player == 2:
@@ -143,12 +147,14 @@ class Fighter():
             self.jump = True
           #attack
           if key[pygame.K_COMMA] or key[pygame.K_PERIOD]:
-            self.attack(target)
-            #determine which attack type was used
             if key[pygame.K_COMMA]:
               self.attack_type = 1
             if key[pygame.K_PERIOD]:
               self.attack_type = 2
+
+            self.attack(target)
+            #determine which attack type was used
+
 
 
     #apply gravity
