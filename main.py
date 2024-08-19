@@ -7,8 +7,14 @@ pygame.init()
 
 from util.fighter import *
 from util.constants import *
+from util.projectile import * 
 
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+# screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.HWSURFACE | pygame.DOUBLEBUF)
+
+# screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.FULLSCREEN | pygame.HWSURFACE | pygame.DOUBLEBUF)
+
 from util.functions import *
 from util.image_loader import *
 
@@ -109,6 +115,19 @@ while run:
         #update fighters
         fighter_1.update()
         fighter_2.update()
+
+
+        #if there's projectile on the screens
+        '''
+        TODO: finish the animation before the instance is removed
+        '''
+        if len(PROJECTILE_LIST) > 0:
+            for i in range(0, len(PROJECTILE_LIST)):
+                if PROJECTILE_LIST[i].hit_stuff == True:
+                    PROJECTILE_LIST.remove(i)
+                PROJECTILE_LIST[i].update()
+                PROJECTILE_LIST[i].draw(screen)
+
 
         #update coordinate for AIs
         fighter_1.set_opponent_position(fighter_2.get_position())
