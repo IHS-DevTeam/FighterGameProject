@@ -3,7 +3,14 @@ from pygame import mixer
 from util.constants import *
 mixer.init()
 pygame.init()
-
+'''
+There's a bug for this class.
+Firstly:
+    when (the projectile hit an enemy) and (destruct animation finished)
+        -> the animation will freeze on a blank image
+Secondly:
+    the fozen blank image will remain on the screen even if the second round starts
+'''
 class Projectile():
     def __init__(self, cord, flip, data, sprite_sheet, animation_steps, sound, target):
         self.spawn_x, self.spawn_y = cord 
