@@ -32,14 +32,18 @@ class Projectile():
         self.animation_list = self.load_images(sprite_sheet, animation_steps)
         self.vel_y = 0
         self.target = target
-        self.ready_to_be_removed = False
+        
 
         '''
         self.ready_to_be_removed is used to tell wheter the projectile
         is ready to be removed from the projectile list
-        set this to True when the destruct() method is finished
+        set this to true after:
+            1. self.hit_stuff == True
+            2. self.image == self.animation_list[self.hit_stuff][len(self.)]
         '''
         self.ready_to_be_removed = False
+        
+        self.do_damage = True
 
 
 
@@ -55,7 +59,13 @@ class Projectile():
             animation_list.append(temp_img_list)
         return animation_list
 
-
+    def update_action(self, new_action):
+        #check if the new action is different to the previous one
+        if new_action != self.action:
+            self.action = new_action
+            #update the animation settings
+            self.frame_index = 0
+            self.update_time = pygame.time.get_ticks()
 
     #this should be constantly calleds
     def move(self, screen_width, screen_height, target):
@@ -79,29 +89,34 @@ class Projectile():
         '''
 
         attacking_rect = pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height)
+
         if attacking_rect.colliderect(target.rect):
-            target.health -= 10
-            target.hit = True
-            self.destruct_sound.play()
+            self.update_action(self.state["hit_stuff"])
+            if self.do_damage == True:
+                target.health -= 10
+                target.hit = True
+                self.destruct_sound.play()
+                self.do_damage = False
+            
             dx = 0
             dy = 0
-            self.ready_to_be_removed = True
-
-        '''
-        if projectile hit the walls or the ground,
-        then set self.hit_stuff = True
-        '''
-        #ensure player stays on screen
-        if self.rect.left + dx < 0:
-            dx = -self.rect.left
-            self.hit_stuff = True
-        if self.rect.right + dx > screen_width:
-            dx = screen_width - self.rect.right
-            self.hit_stuff = True
-        if self.rect.bottom + dy > screen_height - 110:
-            self.vel_y = 0
-            dy = screen_height - 110 - self.rect.bottom
-            self.hit_stuff = True
+        else:
+            '''
+            if projectile hit the walls or the ground,
+            but MISSED THE PLAYER
+            then set self.hit_stuff = True
+            '''
+            
+            if self.rect.left + dx < 0:
+                dx = -self.rect.left
+                self.update_action(self.state["hit_stuff"])
+            if self.rect.right + dx > screen_width:
+                dx = screen_width - self.rect.right
+                self.update_action(self.state["hit_stuff"])
+            if self.rect.bottom + dy > screen_height - 110:
+                self.vel_y = 0
+                dy = screen_height - 110 - self.rect.bottom
+                self.update_action(self.state["hit_stuff"])
 
         self.rect.x += dx 
         self.rect.y += dy
@@ -114,13 +129,7 @@ class Projectile():
         surface.blit(img, (self.rect.x - (self.offset[0] * self.image_scale), self.rect.y - (self.offset[1] * self.image_scale)))
 
 
-    def update_action(self, new_action):
-        #check if the new action is different to the previous one
-        if new_action != self.action:
-            self.action = new_action
-            #update the animation settings
-            self.frame_index = 0
-            self.update_time = pygame.time.get_ticks()
+
 
     def update_image(self):
         animation_cooldown = 35
@@ -151,13 +160,6 @@ class Projectile():
     #handle animation updates
     def update(self):
         
-        
-
-        # if self.hit_stuff:
-            
-        #     self.destruct(self.target)
-        # else:
-        #     self.move(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.move(SCREEN_WIDTH, SCREEN_HEIGHT, self.target)
 
         self.update_image()
