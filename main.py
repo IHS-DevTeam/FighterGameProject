@@ -171,7 +171,7 @@ while run:
                 intro_count = 3
                 fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, True, is_single_player)
-                PROJECTILE_LIST = []
+                # PROJECTILE_LIST = []
     #event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
