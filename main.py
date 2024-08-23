@@ -10,11 +10,15 @@ from util.constants import *
 from util.projectile import * 
 
 
+# screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.HWSURFACE | pygame.DOUBLEBUF)
+
+# screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.FULLSCREEN | pygame.HWSURFACE | pygame.DOUBLEBUF)
 
 from util.functions import *
 from util.image_loader import *
 
+from util.projectile_list import *
 
 
 #set framerate
@@ -27,8 +31,10 @@ last_count_update = pygame.time.get_ticks()
 
 from characters.warrior import Warrior
 from characters.wizzard import Wizard
+from characters.boogieman import Boogie_Man
+from characters.fire_ball import * 
 
-is_single_player = True;
+is_single_player = True
 
 
 # Resize images once before the character selection loop
@@ -79,10 +85,12 @@ while run:
                                 # Toggle single/multiplayer when toggle button is pressed
                                 is_single_player = not is_single_player
                                 draw_single_toggle(screen, single_toggle_on, single_toggle_off, is_single_player)
+                        
 
                 # Once character is selected and game starts, create two instances of fighters
-                fighter_1 = Warrior(1, FIGHTER_1_SPAWN_COORD, False, False)
+                fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, is_single_player)
+                # test_projectile = Fire_Ball((100,350), False, fighter_2)
 
                                 
     else:
@@ -95,6 +103,8 @@ while run:
         draw_health_bar(screen, fighter_2.health, 580, 20)
         draw_text(screen, "P1: " + str(score[0]), score_font, RED, 20, 60)
         draw_text(screen, "P2: " + str(score[1]), score_font, RED, 580, 60)
+
+        
 
         #update countdown
         if intro_count <= 0:
@@ -113,8 +123,24 @@ while run:
         #update fighters
         fighter_1.update()
         fighter_2.update()
+        
+        '''
+        update projectile list
+        TODO: finish the animation before the instance is removed
+        '''
+        if len(PROJECTILE_LIST) > 0:
+            # print("Got shit")
+            for i in range(0, len(PROJECTILE_LIST)):
+                    current_projectile = PROJECTILE_LIST[i]
+                  
+                    current_projectile.update()
+                    current_projectile.draw(screen)
+
+                    # if current_projectile.ready_to_be_removed:dd
+                    #     PROJECTILE_LIST.remove(i)
 
 
+               
 
 
 
@@ -125,6 +151,7 @@ while run:
         #draw fighters
         fighter_1.draw(screen)
         fighter_2.draw(screen)
+        # test_projectile.draw(screen)
 
         #check for player defeat
         if not round_over:
@@ -142,8 +169,9 @@ while run:
             if pygame.time.get_ticks() - round_over_time > ROUND_OVER_COOLDOWN:
                 round_over = False
                 intro_count = 3
-                fighter_1 = Warrior(1, FIGHTER_1_SPAWN_COORD, False, False)
+                fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, True, is_single_player)
+                PROJECTILE_LIST = []
     #event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
