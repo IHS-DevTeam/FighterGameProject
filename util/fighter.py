@@ -263,7 +263,8 @@ class Fighter():
 
   def draw(self, surface):
     img = pygame.transform.flip(self.image, self.flip, False)
-    pygame.draw.rect(surface, (255,0,0), self.rect)
+    #uncomemnt below to show hit box
+    # pygame.draw.rect(surface, (255,0,0), self.rect)
     surface.blit(img, (self.rect.x - (self.offset[0] * self.image_scale), self.rect.y - (self.offset[1] * self.image_scale)))
 
   #planned for versus AI single player mode
