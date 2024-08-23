@@ -125,6 +125,7 @@ while run:
         fighter_2.update()
         
         '''
+        update projectile list
         TODO: finish the animation before the instance is removed
         '''
         if len(PROJECTILE_LIST) > 0:
@@ -134,6 +135,9 @@ while run:
                   
                     current_projectile.update()
                     current_projectile.draw(screen)
+
+                    # if current_projectile.ready_to_be_removed:
+                    #     PROJECTILE_LIST.remove(i)
 
 
                

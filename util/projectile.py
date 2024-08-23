@@ -32,6 +32,7 @@ class Projectile():
         self.animation_list = self.load_images(sprite_sheet, animation_steps)
         self.vel_y = 0
         self.target = target
+        self.ready_to_be_removed = False
 
         '''
         self.ready_to_be_removed is used to tell wheter the projectile
@@ -55,8 +56,9 @@ class Projectile():
         return animation_list
 
 
+
     #this should be constantly calleds
-    def move(self, screen_width, screen_height):
+    def move(self, screen_width, screen_height, target):
         SPEED = 50
         dx = 10
 
@@ -64,13 +66,26 @@ class Projectile():
             dx *= -1
         # dy = 2
         # GRAVITY = 10
-        dy = 100
-        GRAVITY = 0.1
+        dy = 0
+        GRAVITY = 0
 
 
         #apply gravity 
         self.vel_y += GRAVITY
         dy += self.vel_y
+
+        '''
+        if the projectile hit the enemy:
+        '''
+
+        attacking_rect = pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height)
+        if attacking_rect.colliderect(target.rect):
+            target.health -= 10
+            target.hit = True
+            self.destruct_sound.play()
+            dx = 0
+            dy = 0
+            self.ready_to_be_removed = True
 
         '''
         if projectile hit the walls or the ground,
@@ -129,31 +144,23 @@ class Projectile():
 
             
 
-    '''
-    function for distructing the projectile
-    call this function when self.hit_stuff == true
 
-    '''
-    def destruct(self, target):
-        self.destruct_sound.play()
-        #projectile hit box is the same as the init rect
-        attacking_rect = pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height)
-        if attacking_rect.colliderect(target.rect):
-            target.health -= 10
-            target.hit = True
     
     def ready_to_be_removed(self):
         return self.ready_to_be_removed
     #handle animation updates
     def update(self):
         
-        self.move(SCREEN_WIDTH, SCREEN_HEIGHT)
+        
 
-        if self.hit_stuff:
-            self.destruct(self.target)
+        # if self.hit_stuff:
+            
+        #     self.destruct(self.target)
+        # else:
+        #     self.move(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.move(SCREEN_WIDTH, SCREEN_HEIGHT, self.target)
 
         self.update_image()
-
         
 
         
