@@ -8,7 +8,7 @@ from util.fighter import Fighter
 
 from util.projectile_list import *
 
-from characters.fire_ball import *
+from characters.arrow import *
 HUNTRESS_SIZE = 100
 HUNTRESS_SCALE = 5
 HUNTRESS_OFFSET = [43, 31]
@@ -36,5 +36,5 @@ class Huntress(Fighter):
           target.health -= 10
           target.hit = True
       elif self.get_attack_type() == 1:
-        current_projectile = Fire_Ball(self.get_center(), self.get_fliped(), target)
+        current_projectile = ARROW(self.get_center(), self.get_fliped(), target)
         PROJECTILE_LIST.append(current_projectile)
