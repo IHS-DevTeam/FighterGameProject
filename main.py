@@ -31,6 +31,7 @@ last_count_update = pygame.time.get_ticks()
 
 from characters.warrior import Warrior
 from characters.wizzard import Wizard
+from characters.huntress import Huntress
 from characters.boogieman import Boogie_Man
 from characters.fire_ball import * 
 
@@ -88,7 +89,7 @@ while run:
                         
 
                 # Once character is selected and game starts, create two instances of fighters
-                fighter_1 = Boogie_Man(1, FIGHTER_1_SPAWN_COORD, False, False)
+                fighter_1 = Huntress(1, FIGHTER_1_SPAWN_COORD, False, False)
                 fighter_2 = Wizard(2, FIGHTER_2_SPAWN_COORD, False, is_single_player)
                 # test_projectile = Fire_Ball((100,350), False, fighter_2)
 
