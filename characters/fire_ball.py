@@ -14,7 +14,7 @@ FIRE_BALL_DATA = [FIRE_BALL_SIZE, FIRE_BALL_SCALE, FIRE_BALL_OFFSET]
 #musics
 fire_ball_fx = pygame.mixer.Sound("assets/audio/fire_ball.mp3")
 fire_ball_fx.set_volume(0.5)
-FIRE_BALL_SHEET = pygame.image.load("assets/images/fire_ball/fire_ball.png").convert_alpha()
+FIRE_BALL_SHEET = pygame.image.load("assets/images/projectile/fire_ball.png").convert_alpha()
 
 '''
 last frame in "hit_stuff" state for the fireball projectile is blank
