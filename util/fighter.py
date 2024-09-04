@@ -45,6 +45,7 @@ class Fighter():
     self.health = 100
     self.alive = True
     self.isAI = isAI
+    self.speed = 10
     self.opponent_x = 0
     self.opponent_y = 0
     self.target = None
@@ -64,7 +65,7 @@ class Fighter():
     return self.attack_type
   
   def move(self, screen_width, screen_height, surface, target, round_over):
-    SPEED = 10
+    SPEED = self.speed
     GRAVITY = 2
     dx = 0
     dy = 0
@@ -263,7 +264,7 @@ class Fighter():
 
   def draw(self, surface):
     img = pygame.transform.flip(self.image, self.flip, False)
-    #uncomemnt below to show hit box
+    # uncomemnt below to show hit box
     # pygame.draw.rect(surface, (255,0,0), self.rect)
     surface.blit(img, (self.rect.x - (self.offset[0] * self.image_scale), self.rect.y - (self.offset[1] * self.image_scale)))
 
