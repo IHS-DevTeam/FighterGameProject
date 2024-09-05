@@ -5,6 +5,7 @@ mixer.init()
 pygame.init()
 
 from util.fighter import Fighter
+from util.minion import Minion
 
 from util.projectile_list import *
 
@@ -26,6 +27,8 @@ class Huntress(Fighter):
     super().__init__(player, cord, flip, HUNTRESS_DATA, huntress_sheet, HUNTRESS_ANIMATION_STEPS, sword_fx, isAI)
     self.speed = 17
     self.health = 70
+    self.is_there_minion = False
+    self.minion = Minion(self.opponent_x, self.opponent_y)
 
   def attack(self, target):
     if self.attack_cooldown == 0:
@@ -40,3 +43,14 @@ class Huntress(Fighter):
       elif self.get_attack_type() == 1:
         current_projectile = ARROW(self.get_center(), self.get_fliped(), target)
         PROJECTILE_LIST.append(current_projectile)
+
+  #handle animation updates
+  def update(self):
+    Fighter.update(self)
+    #self.minion.update(self)
+
+  def summon(self, target):
+    if self.attack_cooldown == 0:
+      is_there_minion = True
+      # Summon minion
+      Minion(self, self.opponent)

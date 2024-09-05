@@ -103,6 +103,7 @@ class Projectile():
         surface.blit(img, (self.rect.x - (self.offset[0] * self.image_scale), self.rect.y - (self.offset[1] * self.image_scale)))
         #uncmment the bleow line to show projectile hitbox
         # pygame.draw.rect(surface, (255,0,0), self.rect)
+        
     def update_image(self):
         animation_cooldown = 35
         self.image = self.animation_list[self.action][self.frame_index]
