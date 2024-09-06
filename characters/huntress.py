@@ -23,34 +23,36 @@ huntress_sheet = pygame.image.load("assets/images/huntress/Sprites/huntress.png"
 HUNTRESS_ANIMATION_STEPS = [10, 8, 2, 6, 2, 3, 10]
 class Huntress(Fighter):
   def __init__(self, player, cord, flip, isAI):
-    
     super().__init__(player, cord, flip, HUNTRESS_DATA, huntress_sheet, HUNTRESS_ANIMATION_STEPS, sword_fx, isAI)
     self.speed = 17
     self.health = 70
     self.is_there_minion = False
-    self.minion = Minion(self.opponent_x, self.opponent_y)
+    self.minion = None  # Initialize minion as None
 
   def attack(self, target):
-    if self.attack_cooldown == 0:
-      #execute attack
-      self.attacking = True
-      self.attack_sound.play()
-      attacking_rect = pygame.Rect(self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y, 2 * self.rect.width, self.rect.height)
-      if self.get_attack_type() == 2:
-        if attacking_rect.colliderect(target.rect):
-          target.health -= 15
-          target.hit = True
-      elif self.get_attack_type() == 1:
-        current_projectile = ARROW(self.get_center(), self.get_fliped(), target)
-        PROJECTILE_LIST.append(current_projectile)
+      if self.attack_cooldown == 0:
+        # Execute attack
+          self.attacking = True
+          self.attack_sound.play()
+          attacking_rect = pygame.Rect(self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y, 2 * self.rect.width, self.rect.height)
+          if self.get_attack_type() == 2:
+              if attacking_rect.colliderect(target.rect):
+                  self.summon(self.opponent_x, self.opponent_y)
+          elif self.get_attack_type() == 1:
+              current_projectile = ARROW(self.get_center(), self.get_fliped(), target)
+              PROJECTILE_LIST.append(current_projectile)
 
-  #handle animation updates
+  # Handle animation updates
   def update(self):
     Fighter.update(self)
-    #self.minion.update(self)
+    if self.is_there_minion:
+      print("DevUp")
+      # Update the minion if it exists
+      if self.minion:
+        self.minion.update()
 
-  def summon(self, target):
-    if self.attack_cooldown == 0:
-      is_there_minion = True
-      # Summon minion
-      Minion(self, self.opponent)
+  def summon(self, opponent_x, opponent_y):
+      if self.attack_cooldown == 0 and not self.is_there_minion:
+        self.is_there_minion = True
+        # Summon minion and store it as an attribute
+        self.minion = Minion(opponent_x, opponent_y)

@@ -80,11 +80,16 @@ class Minion():
 
     self.target = target
 
-def update(self):
-  print("whatup")
+  def update(self):
+    # Update the minion's state
+    self.lifespan -= 1
+    if self.lifespan <= 0:
+        self.alive = False
+    print("Minion updated. Lifespan left:", self.lifespan)
 
-def main():    print("whatup")
+  # Main loop for testing
+  def main():
+    print("Main running")
 
-if __name__ == '__main__':
-  main()
-
+  if __name__ == '__main__':
+    main()
