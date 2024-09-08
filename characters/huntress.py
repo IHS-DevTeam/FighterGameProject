@@ -36,7 +36,6 @@ class Huntress(Fighter):
           self.attack_sound.play()
           attacking_rect = pygame.Rect(self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y, 2 * self.rect.width, self.rect.height)
           if self.get_attack_type() == 2:
-              if attacking_rect.colliderect(target.rect):
                   self.summon(self.opponent_x, self.opponent_y)
           elif self.get_attack_type() == 1:
               current_projectile = ARROW(self.get_center(), self.get_fliped(), target)
