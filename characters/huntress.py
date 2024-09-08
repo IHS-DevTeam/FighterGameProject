@@ -50,6 +50,10 @@ class Huntress(Fighter):
       # Update the minion if it exists
       if self.minion:
         self.minion.update()
+        if (not self.minion.is_alive()):
+          # remove the instance
+          print("Minion has died. Removing instance.")
+          self.minion = None  # Remove the minion instance
 
   def summon(self, opponent_x, opponent_y):
       if self.attack_cooldown == 0 and not self.is_there_minion:
