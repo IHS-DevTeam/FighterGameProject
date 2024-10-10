@@ -161,7 +161,7 @@ class Fighter():
     #apply gravity
     self.vel_y += GRAVITY
     dy += self.vel_y
-
+#___________________________10/10/24
     #ensure player stays on screen
     if self.rect.left + dx < 0:
       dx = -self.rect.left
