@@ -1,0 +1,77 @@
+import&inittialize pygame and mixer
+
+class Projectile()
+{    
+    initlize_PIV
+    {
+        projectile_image[size,scale,offset]
+        projectile_state[flying, hit_stuff]
+        projectile_position(x,y)
+
+    }
+
+    def load_images()
+    {
+        load images
+    }
+
+    def update_action()
+    {
+        if (new_action != current_action)
+        {
+            current_action = new_action
+            update_time
+        }
+    }
+
+
+    def move()
+    {
+        dx = 10
+        if (character_flipped)
+        {
+            dx.flip() #dx *= -1
+        }
+
+        initialize_projectile_hitbox()
+
+        if (projectile.hitbox.collide(target_hitbox))
+        {
+            do_damage
+            play_hit_sound
+            projectile.hit_stuff = True
+        }
+        else if (projectile_hitbox.collide(window_wall))
+        {
+            projectile.hit_stuff = True
+        }
+
+        prjectile.x += dx 
+        #projectile y value don't change
+
+
+    }
+
+    def draw(){draw image}
+
+    def update_image(){update image}
+    {
+        set animation fps 
+        if (not hitstuff)
+        {
+            loop though animation list
+        }
+        if (hit stuff)
+        {
+            play projectile hitstuff animation 
+            projectile ready_to_be_removed
+        }
+    }
+    
+    def update()
+    {
+        projectile.move()
+        projectile.update_image()
+    }
+
+}

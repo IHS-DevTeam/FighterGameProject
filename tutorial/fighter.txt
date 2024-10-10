@@ -1,0 +1,103 @@
+import&initialize pygame&mixer 
+
+class Fighter()
+{
+    initlize_PIV
+    {
+        character_image[size,scale,offset]
+        character_state[idle,run,jump,attack1,attack2,hit,death]
+        character_position(x,y)
+
+    }
+
+    def image_loader(){}
+
+    def update_action()
+    {
+        if (new_action != current_action)
+        {
+            current_action = new_action
+            update_time
+        }
+    }
+
+    def move()
+    {
+        init [speed, gravity]
+        if (isAI)
+        {
+            random [move_to_play/jump/attack]
+        }
+        else
+        {
+            if (player1):
+            {
+                WASD -> update dx,dy
+                TR -> attack
+            }
+            if(player2)
+            {
+                arrows -> update dx,dy
+                ",." -> attack
+            }
+        }
+
+        dy += gravity
+
+        if(after apply dx&dy -> player[stay in screen, above floor])
+        {
+            update character position.
+        }
+
+        apply_attack_cooldown
+        characters.face_eachother.
+
+    }
+
+    def update()
+    {
+        if (dead)->self.state = dead
+        elif (hit) -> self.state = hit 
+        elif (attack) -> self.state = attack 
+        elif (jump) -> self.state = jump 
+        elif (run) -> self.state = run 
+        else: self.state = idle
+
+        #update animation 
+        update_image
+        if (animation_loop_finished)
+        {
+            if (player_dead)
+            {
+                don't reloop animation
+            }
+            else:
+            {
+                reloop animation
+
+                if (attack_pressed/hit)
+                {
+                    apply_attack_cooldown
+                }
+            }
+        }
+    }
+
+    def attack()
+    {
+        if (attack_cooldown = 0)
+        {
+            attack_sound_play
+            if play.attackbox.colide(target.hitbox)
+            {
+                target.health -=10
+                target.hit = True
+            }
+        }
+    }
+
+    def draw(){draw image to screen}
+
+    other small getter functions
+    [player_position, enemy_position, fliped, etc]
+}
