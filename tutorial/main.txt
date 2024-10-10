@@ -1,0 +1,77 @@
+import pygame and mixer
+initialize pygame and mizer
+
+import fighter, constants, projectiles
+
+initialize screen
+
+import functions, image_loader, projectile_list
+
+initialize in-game timer
+
+import characters(child class of fighter)
+
+#main game loop
+
+game_run = True
+if (game_run):
+{
+    clock_tick(60fps)
+    if (game_not_started):
+    {
+        draw_start_page
+        loop_though_pygame_events:
+        {
+            if (quit_game):
+            {
+                game_run = False
+            }
+            if (mouse_click):
+            {
+                if(click_on_start_button)
+                {
+                    (click_on_start_button) -> game_start 
+                    (click_on_toggle) -> single/double player
+                    intialize_countdown
+                }
+            }
+        }
+    }
+    else: #game_started
+    {
+        draw[bg, healthbar,score]
+        if (countdown finished):
+        { 
+            allow players to move
+        }
+        else:
+        {
+            countdown
+        }
+
+        update_players
+
+        loop_though_projectiles:
+        {
+            update_each_projectile
+        }
+
+        tell_AI_the_player's positions
+
+        if (round_not_over)
+            (if 1 of the characters dead)
+            {
+                update scores, set_round_over
+            }
+        else:(round over)
+        {
+            show victory image 
+            reset characters 
+            reset countdown
+        }
+    if (quite_game)
+    {
+        quite game
+    }
+    }
+}
