@@ -39,7 +39,7 @@ Make sure to talk to other club members before making any change!
 
 ## 5. Screen Recording:
 
-https://user-images.githubusercontent.com/15172744/190894691-c52ac22d-b76c-4890-9057-98eed66683a9.mp4
+https://github.com/IHS-DevTeam/FighterGameProject/blob/main/dev_log/2024-08-23.mp4
 
 
 ## 6. Originally Created By:
@@ -55,5 +55,6 @@ Github: https://github.com/russs123/brawler_tut
 ## 7. Modified By:
 
 Name: IHS DevTeam
+
 
 
