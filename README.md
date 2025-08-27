@@ -37,13 +37,9 @@ Enjoy 😎
 
 Make sure to talk to other club members before making any change!
 
-## 5. Screen Recording:
+## 5. Demo:
 
-<video src="https://raw.githubusercontent.com/IHS-DevTeam/FighterGameProject/refs/heads/main/dev_log/2024-08-23.mp4" 
-       controls 
-       width="600">
-Your browser does not support the video tag.
-</video>
+https://private-user-images.githubusercontent.com/122405175/482883537-29f844f0-0617-48f3-a1fc-55acd4a1e167.mp4
 
 
 
@@ -56,6 +52,9 @@ Project Name: Street Fighter Style Fighting Game in Python using Pygame - Comple
 Youtube: https://www.youtube.com/watch?v=s5bd9KMSSW4
 
 Github: https://github.com/russs123/brawler_tut
+
+Original Game: https://user-images.githubusercontent.com/15172744/190894691-c52ac22d-b76c-4890-9057-98eed66683a9.mp4
+
 
 ## 7. Modified By:
 
