@@ -53,10 +53,11 @@ Youtube: https://www.youtube.com/watch?v=s5bd9KMSSW4
 
 Github: https://github.com/russs123/brawler_tut
 
-Original Game: https://user-images.githubusercontent.com/15172744/190894691-c52ac22d-b76c-4890-9057-98eed66683a9.mp4
+## 7. Original Game:
+https://user-images.githubusercontent.com/15172744/190894691-c52ac22d-b76c-4890-9057-98eed66683a9.mp4
 
 
-## 7. Modified By:
+## 8. Modified By:
 
 Name: IHS DevTeam
 
